@@ -1,0 +1,7 @@
+/target/
+/testdata/*.pt
+/testdata/*.yuf
+/testdata/*.mid
+/testdata/*.png
+/testdata/*.txt
+

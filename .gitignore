@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+data/raw/
+data/processed/
+checkpoints/
+outputs/
+.smoke/
+.pytest_cache/
+vulkan/model.yuf
+datasets/

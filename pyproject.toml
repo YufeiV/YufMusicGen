@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yufmusicgen"
+version = "0.1.0"
+description = "A compact MIDI music generation baseline built around RWKV-7 style recurrence, ROSA memory and MidiTok tokenization."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "miditok>=3.0.6",
+    "numpy>=1.24",
+    "pytest>=8.0",
+    "symusic>=0.6.0",
+    "tqdm>=4.66",
+    "ninja>=1.11",
+    "torch>=2.11.0",
+    "torchvision",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+webui = ["gradio>=5.0", "matplotlib>=3.8"]
+
+[project.scripts]
+yufmusicgen-preprocess = "yufmusicgen.cli.preprocess:main"
+yufmusicgen-pretrain = "yufmusicgen.cli.pretrain:main"
+yufmusicgen-posttrain = "yufmusicgen.cli.posttrain:main"
+yufmusicgen-generate = "yufmusicgen.cli.generate:main"
+yufmusicgen-webui = "yufmusicgen.webui:main"
+
+[tool.uv]
+index-url = "https://pypi.org/simple"
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+
+[tool.setuptools.packages.find]
+include = ["yufmusicgen*"]
+
+[tool.setuptools.package-data]
+yufmusicgen = ["cuda/*.cpp", "cuda/*.cu"]
