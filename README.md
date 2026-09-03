@@ -132,6 +132,8 @@ python scripts/posttrain.py \
 
 ## 3.5 PEFT 微调（LoRA / PiSSA / MiSS / State tuning）
 
+> 注：由于微调实现有问题，已经回退删除了
+
 项目参考 [RWKV-PEFT](https://github.com/Joluck/RWKV-PEFT) 内置了自包含的 PEFT 实现（`yufmusicgen/peft.py`），不依赖第三方 `peft` 库，LoRA / MiSS 适配器是可合并回基座权重的普通 `nn.Module`，State tuning 则把每层循环初始状态变成可学习参数。预训练和后续训练入口都支持：
 
 ```bash
